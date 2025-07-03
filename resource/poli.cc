@@ -8,8 +8,54 @@ void wait(int ms){
     Sleep(ms);
 }
 
+int randomPosition() {
+    return 1 + rand() % 3; 
+}
+
+void fondo(int flecha, int cubo, string flechas[]) {
+    system("cls");
+
+    cout << "=============================\n";
+    cout << (cubo == 1 ? "       ⬜" : "          ") << "\n";
+    cout << "    " << flechas[flecha - 1];
+    if (cubo == 2)
+        cout << "    ⬜";
+    cout << "\n";
+    cout << (cubo == 3 ? "       ⬜" : "          ") << "\n";
+
+    cout << "=============================\n";
+    cout << "Press X when you consider the arrow points to the target\n";
+}
+
 bool game(int velocidadMs) {
-    
+    string flechas[] = { "↗", "→", "↘" };
+    int flecha, cubo;
+    bool acertado = false;
+
+    int tiempoMax = 8;
+    int tiempo = 0;
+
+    int pasos = velocidadMs / 100;
+    if(pasos < 1) pasos = 1;
+
+    while (tiempo < tiempoMax && !acertado) {
+        flecha = randomPosition();
+        cubo = randomPosition();
+
+        fondo(flecha, cubo, flechas);
+
+        for (int i = 0; i < pasos; ++i) {
+            if (_kbhit()) {
+                char tecla = _getch();
+                if (tecla == 'x' || tecla == 'X') {
+                    return flecha == cubo;
+                }
+            }
+            wait(100);
+        }
+        tiempo++;
+    }
+
     return false;
 }
 
