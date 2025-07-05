@@ -1,61 +1,34 @@
 #include <iostream>
-#include <unistd.h>
-#include <termios.h>
-#include <fcntl.h>
+#include <conio.h>
+#include <windows.h>
 #include <cstdlib>
 #include <ctime>
 
 using namespace std;
 
-void setNonBlockingMode() {
-    termios term;
-    tcgetattr(STDIN_FILENO, &term);
-    term.c_lflag &= ~(ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &term);
-}
-
-void resetTerminalMode() {
-    termios term;
-    tcgetattr(STDIN_FILENO, &term);
-    term.c_lflag |= (ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &term);
-}
-
-int keyPressed() {
-    int oldf = fcntl(STDIN_FILENO, F_GETFL);
-    fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
-    int c = getchar();
-    fcntl(STDIN_FILENO, F_SETFL, oldf);
-    if (c != EOF) {
-        ungetc(c, stdin);
-        return 1;
-    }
-    return 0;
-}
-
 void narrateIntro() {
     cout << "=== Misko Jhones and the Conveniently Convenient Trial of the Glowing Statues ===\n";
-    sleep(2);
+    Sleep(2000);
     cout << "\nNarrator: You find yourself in the dark, dusty basement of the university library...\n";
-    sleep(3);
+    Sleep(3000);
     cout << "Narrator: In front of you stand ancient statues...\n";
-    sleep(2);
+    Sleep(2000);
     cout << "Narrator: Their glowing eyes seem to follow your every move.\n";
-    sleep(3);
+    Sleep(3000);
     cout << "Narrator: You must sneak past them to reach the legendary manual...\n";
-    sleep(3);
+    Sleep(3000);
     cout << "\nNarrator: Listen carefully.\n";
-    sleep(2);
+    Sleep(2000);
     cout << "Narrator: Move by pressing 'w' repeatedly... but only when the statues close their eyes.\n";
-    sleep(4);
+    Sleep(4000);
     cout << "Narrator: If they see you move... they will turn you to stone instantly.\n";
-    sleep(4);
+    Sleep(4000);
     cout << "Narrator: Do not press any key when their eyes are watching.\n";
-    sleep(3);
+    Sleep(3000);
     cout << "Narrator: You only have 30 total chances to move. Use them wisely.\n";
-    sleep(3);
+    Sleep(3000);
     cout << "\nNarrator: Your trial begins... now.\n\n";
-    sleep(3);
+    Sleep(3000);
 }
 
 bool playStatueGame(bool showIntro) {
@@ -84,15 +57,15 @@ bool playStatueGame(bool showIntro) {
         else
             cout << "The statues are watching! DO NOT MOVE!\n";
 
-        int duration = 4000000; // 4 seconds
-        int interval = 50000;   // 0.05 seconds
+        int duration = 4000; // 4 seconds total
+        int interval = 50;   // 50 ms per check
 
         for (int i = 0; i < duration / interval; ++i) {
             if (totalKeyPresses >= maxSteps) break;
 
-            if (keyPressed()) {
-                char key = getchar();
-                if ((key == 'w' || key == 'W')) {
+            if (_kbhit()) {
+                char key = _getch();
+                if (key == 'w' || key == 'W') {
                     totalKeyPresses++;
                     if (eyesClosed) {
                         if (steps < requiredSteps) {
@@ -106,7 +79,7 @@ bool playStatueGame(bool showIntro) {
                     }
                 }
             }
-            usleep(interval);
+            Sleep(interval);
         }
 
         if (steps >= requiredSteps) {
@@ -114,7 +87,7 @@ bool playStatueGame(bool showIntro) {
             return true;
         }
 
-        sleep(1);
+        Sleep(1000);
         cout << "-----------------------------\n";
     }
     return false;
@@ -122,17 +95,17 @@ bool playStatueGame(bool showIntro) {
 
 bool finalBookPuzzle() {
     cout << "\nA mysterious glowing figure appears...\n";
-    sleep(2);
+    Sleep(2000);
     cout << "\"...You did it, Misko...\"\n";
-    sleep(2);
+    Sleep(2000);
     cout << "\"I am the Conveniently Convenient Guardian of the Ol' Koi Manual, but you can call me Roberto.\"\n";
-    sleep(3);
+    Sleep(3000);
     cout << "\"You have completed the trial of the glowing statues.\"\n";
-    sleep(3);
+    Sleep(3000);
     cout << "\"Now, only one task remains.\"\n";
-    sleep(2);
+    Sleep(2000);
     cout << "\"Before you are four books. One of them contains the knowledge of the Ol' Koi...\"\n";
-    sleep(3);
+    Sleep(3000);
     cout << "Choose a book:\n";
     cout << "1. Cooking with Koi\n2. The History of Convenient Things\n3. Ol' Koi Manual: Possibly Real Edition\n4. Gardening for the Lazy\nYour choice: ";
 
@@ -140,17 +113,17 @@ bool finalBookPuzzle() {
     cin >> choice;
 
     if (choice == 3) {
-        sleep(2);
+        Sleep(2000);
         cout << "\n\"You have chosen... wisely.\"\n";
-        sleep(3);
+        Sleep(3000);
         cout << "\nThe floor begins to shake violently...\n";
-        sleep(2);
+        Sleep(2000);
         cout << "\"Misko! You must escape!\"\n";
-        sleep(2);
+        Sleep(2000);
         cout << "\"No... I shall stay. I owe 24 years of child support. This is my destiny.\"\n";
-        sleep(3);
+        Sleep(3000);
         cout << "\nMisko: \"ROBERTOOOOO!! I will find the Ol' Koi... for you.\"\n";
-        sleep(2);
+        Sleep(2000);
         cout << "*Tears stream down Misko's face as the library crumbles...*\n";
         return true;
     } else {
@@ -166,9 +139,7 @@ int main() {
     char retry;
 
     while (!won) {
-        setNonBlockingMode();
         bool passedStatues = playStatueGame(firstTime);
-        resetTerminalMode();
         firstTime = false;
 
         if (!passedStatues) {
@@ -184,13 +155,13 @@ int main() {
 
         cout << "\n===========================\n";
         cout << "Now preparing for the final challenge...\n";
-        sleep(2);
+        Sleep(2000);
 
         if (finalBookPuzzle()) {
             won = true;
         } else {
             cout << "\nYou failed to choose the correct book. The trial begins anew...\n\n";
-            sleep(2);
+            Sleep(2000);
         }
     }
 
