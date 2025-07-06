@@ -6,6 +6,8 @@
 #include "poli.h"
 #include "prologo.h"
 #include "menu.h"
+#include "juegoscasino.h"
+#include "statues.h"
 using namespace std;
 
 struct Player {
@@ -20,11 +22,17 @@ int historia(int progress) {
         case 0:
             progress += pro(); break;
         case 1:
-            progress += pro(); break;
+            progress += statues(); break;
         case 2:
-            progress += archery(); break;
+            progress += archery();
+            jugador.money -= 4; 
+            break;
         case 3:
-            progress += pro(); break;
+            progress += casino(); 
+            if(progress>4){
+                jugador.money += 100;
+            } 
+            break;
         case 4:
             progress += pro(); break;
         case 5:
@@ -32,21 +40,49 @@ int historia(int progress) {
         case 6:
             progress += pro(); break;
         default:
-            cout << "¡Has completado todas las misiones!\n";
+            cout << "You have completed the game!\n";
             break;
     }
     return progress;
+}
+
+bool nombreValido(const string& nombre) {
+    for (char c : nombre) {
+        if (!isalnum(c)) return false;
+    }
+    return true;
 }
 
 
 
 
 void save() {
+    string nameGame;
+    cout << "File name: ";
+    cin >> nameGame;
+
+    if (!nombreValido(nameGame)) {
+        cout << "Invalid file name, please use only numbers and letters\n";
+        return;
+    }
+
+    ofstream archivo(nameGame + ".txt");
+    if (archivo.is_open()) {
+        archivo << nameGame << " "
+                << jugador.progress << " "
+                << jugador.money << "\n";
+
+        archivo.close();
+        cout << "Game saved successfully.\n\n";
+    } else {
+        cout << "Failed to save the game. :(\n";
+    }
     
 }
 
 
 bool load() {
+    
     
 }
 
@@ -59,9 +95,16 @@ int main() {
 
         switch (opcion) {
             case 1:
+                jugador.progress = 0;
+                jugador.money = 5;
                 jugador.progress = historia(jugador.progress);
                 break;
             case 2:
+                if(jugador.progress == 0){
+                    cout<<"Game hasn't been played yet. Starting now...\n";
+                    wait(1000);
+                    system("cls");
+                }
                 jugador.progress = historia(jugador.progress);
                 break;
             case 3:

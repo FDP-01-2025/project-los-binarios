@@ -29,7 +29,7 @@ void showlifes(int attempts) {
 }
 
 // active wait (non-blocking)
-void wait(int miliseconds) {
+void waitt(int miliseconds) {
     auto start = high_resolution_clock::now();
     while (duration_cast<milliseconds>(high_resolution_clock::now() - start).count() < miliseconds) {
         // waiting time
@@ -43,7 +43,7 @@ void losscounter(int seconds, int lifes) {
     cout << "\nResuming in: ";
     for (int i = seconds; i >= 1; i--) {
         cout << i << "... ";
-        wait(1000);
+        waitt(1000);
     }
     cout << "\n";
     system("cls");

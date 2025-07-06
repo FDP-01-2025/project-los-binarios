@@ -1,3 +1,4 @@
+#define STATUES_H
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
@@ -36,13 +37,10 @@ bool playStatueGame(bool showIntro) {
     const int requiredSteps = 30;
     int steps = 0;
     int totalKeyPresses = 0;
-    bool playing = true;
 
-    if (showIntro) {
-        narrateIntro();
-    }
+    if (showIntro) narrateIntro();
 
-    while (playing) {
+    while (true) {
         if (totalKeyPresses >= maxSteps) {
             cout << "\nYou've exhausted your 30 steps without reaching the end.\n";
             cout << "The statues awaken and turn you to stone.\n";
@@ -51,14 +49,13 @@ bool playStatueGame(bool showIntro) {
         }
 
         bool eyesClosed = rand() % 2 == 0;
-
         if (eyesClosed)
             cout << "The statues' eyes are closed... Move now! (press 'w' multiple times)\n";
         else
             cout << "The statues are watching! DO NOT MOVE!\n";
 
-        int duration = 4000; // 4 seconds total
-        int interval = 50;   // 50 ms per check
+        int duration = 4000;
+        int interval = 50;
 
         for (int i = 0; i < duration / interval; ++i) {
             if (totalKeyPresses >= maxSteps) break;
@@ -90,7 +87,6 @@ bool playStatueGame(bool showIntro) {
         Sleep(1000);
         cout << "-----------------------------\n";
     }
-    return false;
 }
 
 bool finalBookPuzzle() {
@@ -112,6 +108,13 @@ bool finalBookPuzzle() {
     int choice;
     cin >> choice;
 
+    if (cin.fail() || choice < 1 || choice > 4) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "\n\"That... was not a valid book. Try again from the beginning.\"\n";
+        return false;
+    }
+
     if (choice == 3) {
         Sleep(2000);
         cout << "\n\"You have chosen... wisely.\"\n";
@@ -132,7 +135,7 @@ bool finalBookPuzzle() {
     }
 }
 
-int main() {
+int statues() {
     srand(time(0));
     bool won = false;
     bool firstTime = true;
@@ -148,7 +151,7 @@ int main() {
             cin >> retry;
             if (retry == 'n' || retry == 'N') {
                 cout << "Returning to the main menu...\n";
-                break;
+                return 0;
             }
             continue;
         }
@@ -159,11 +162,12 @@ int main() {
 
         if (finalBookPuzzle()) {
             won = true;
+            return 1;
         } else {
             cout << "\nYou failed to choose the correct book. The trial begins anew...\n\n";
             Sleep(2000);
         }
     }
 
-    return 0;
+    return 0; 
 }
