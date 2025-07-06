@@ -1,3 +1,4 @@
+#define FINALBATTLE_H
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -238,7 +239,7 @@ void loopGame() {
     _getch();
 }
 
-int main() {
+int battle() {
     loopGame();
-    return 0;
+    return 1;
 }

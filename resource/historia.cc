@@ -8,6 +8,7 @@
 #include "menu.h"
 #include "juegoscasino.h"
 #include "statues.h"
+#include "finalBattle.h"
 using namespace std;
 
 struct Player {
@@ -38,7 +39,7 @@ int historia(int progress) {
         case 5:
             progress += race(); break;
         case 6:
-            progress += pro(); break;
+            progress += battle(); break;
         default:
             cout << "You have completed the game!\n";
             break;
@@ -82,7 +83,27 @@ void save() {
 
 
 bool load() {
-    
+    string fileName;
+    cout << "File name (without .txt): ";
+    cin >> fileName;
+
+    ifstream archivo(fileName + ".txt");
+    string nameGame;
+
+    if (archivo.is_open()) {
+        if (archivo >> nameGame >> jugador.progress >> jugador.money) {
+            cout << "Loaded: Level = " << jugador.progress << ", Money = $" << jugador.money << endl;
+            archivo.close();
+            return true;
+        } else {
+            cout << "Error\n";
+            archivo.close();
+            return false;
+        }
+    } else {
+        cout << "File could not be opened.\n";
+        return false;
+    }
     
 }
 
