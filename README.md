@@ -1,32 +1,32 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/mi1WNrHU)
-# Proyecto de C++ - [Nombre del Juego]
+# Proyecto de C++ - [Miskho Jhones: The missing Ol Koi]
 
 ## Descripción del Proyecto
 
-Breve descripción del juego, su propósito, cómo se juega y cualquier otro detalle importante que describa la idea general del proyecto.
+Miskho Jhones: The Missing Ol Koi is an RPG game about a student at UCA.
+One day, the UCA security guard gives him a special mission:
+Recover the Ol Koi, or the university will blow up.
 
-**Por ejemplo:**
-Este proyecto consiste en un juego de aventuras donde el jugador debe explorar un mundo virtual, recoger objetos, resolver acertijos y enfrentar enemigos. El juego utiliza estructuras de control como `if`, `switch`, y bucles `while` y `for` para generar interacciones dinámicas.
+With this premise, Miskho begins his adventure, completing mini-games to retrieve the Ol Koi and save the university.
+
+The game is built using if conditionals that respond to the player's progress, and while loops to make sure they successfully complete each mini-game.
+
 
 ## Equipo
 
-- **Nombre del equipo:** [Nombre del equipo]
+- **Nombre del equipo:** [Los Binarios]
 
 ### Integrantes del equipo
 
-1. **Nombre completo:** [Nombre del estudiante 1]  
-   **Carnet:** [Carnet del estudiante 1]
+1. **Nombre completo:** [Flavio Cesar Pineda Caceres]  
+   **Carnet:** [00115625]
 
-2. **Nombre completo:** [Nombre del estudiante 2]  
-   **Carnet:** [Carnet del estudiante 2]
+2. **Nombre completo:** [Christopher Estuardo Santos Lopez]  
+   **Carnet:** [00193025]
 
-3. **Nombre completo:** [Nombre del estudiante 3]  
-   **Carnet:** [Carnet del estudiante 3]
+3. **Nombre completo:** [Cesar Andres Olmedo Lobos]  
+   **Carnet:** [00033225]
 
-(Agregar más integrantes si es necesario)
 
-## Instrucciones de Ejecución
 
-1. Clona este repositorio en tu máquina local:
-   ```bash
-   git clone [URL del repositorio]
+
