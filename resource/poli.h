@@ -1,12 +1,11 @@
+#define POLI_H
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
 #include <ctime>
+#include "sleep.h"
 using namespace std;
 
-void wait(int ms){
-    Sleep(ms);
-}
 
 int randomPosition() {
     return 1 + rand() % 3; 
@@ -59,7 +58,7 @@ bool game(int velocidadMs) {
     return false;
 }
 
-int main(){
+int archery(){
     srand(time(0));
     SetConsoleOutputCP(CP_UTF8);
 
@@ -112,7 +111,7 @@ int main(){
                     wait(1000);
                     cout << "...";
                     wait(1500);
-                    cout << " Mister T: Well, there *isn't* another explanation!" << endl;
+                    cout << " Mister T: Well, there isn't another explanation!" << endl;
                     wait(3000);
                     system("cls");
                 }
@@ -166,5 +165,5 @@ int main(){
     cout << "\nPress any key to exit...";
     getch();
 
-    return 0;
+    return 1;
 }

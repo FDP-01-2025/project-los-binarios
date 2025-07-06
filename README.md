@@ -3,13 +3,13 @@
 
 ## Descripción del Proyecto
 
-Miskho Jhones: The Missing Ol Koi is an RPG game about a student at UCA.
-One day, the UCA security guard gives him a special mission:
-Recover the Ol Koi, or the university will blow up.
+Miskho Jhones: The Missing Ol Koi es un RPG estilo uca, nos cuenta la historia de miskho, quien un dia dormido en la magna despues
+de clases, es despertado y amenazado por el vigilante de la uca, encargandole una mision por el bien de la universidad,
+conseguir el Ol Koi, de este modo Miskho comienza su aventura, donde debera pasar distintos retos divertidos para lograr
+su mision.
 
-With this premise, Miskho begins his adventure, completing mini-games to retrieve the Ol Koi and save the university.
-
-The game is built using if conditionals that respond to the player's progress, and while loops to make sure they successfully complete each mini-game.
+El juego esta construido con condicionales, tanto if y switch, bucles y uso bastante amplio de caracteres (como la deteccion
+de estos, etc) ademas del uso de funciones de todo tipo y el manejo de archivos
 
 
 ## Equipo

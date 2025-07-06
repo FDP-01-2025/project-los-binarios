@@ -1,12 +1,11 @@
+#define MENU_H
 #include <iostream>
 #include <windows.h>
+#include "sleep.h"
 using namespace std;
 
-void wait(int ms) {
-    Sleep(ms);
-}
 
-int main() {
+int menu() {
     int option;
     do{
     system("cls"); 
@@ -17,32 +16,48 @@ int main() {
     wait(500);
     cout << "               [1] New Game\n";
     wait(500);
-    cout << "               [2] Load Game\n";
+    cout << "               [2] Continue Game\n";
     wait(500);
-    cout << "               [3] Save Game\n";
+    cout << "               [3] Load Game\n";
     wait(500);
-    cout << "               [4] Exit\n";
+    cout << "               [4] Save Game\n";
+    wait(500);
+    cout << "               [5] Exit\n";
     cout << "\n                    ";
     cin >> option;
 
     switch(option) {
         case 1:
             cout << "\nStarting new game...\n";
+            wait(1000);
+            system("cls");
             break;
         case 2:
-            cout << "\nLoading game...\n";
+            cout << "\nContinue Playing...\n";
+            wait(1000);
+            system("cls");
             break;
         case 3:
-            cout << "\nSaving game...\n";
+            cout << "\nLoading game...\n";
+            wait(1000);
+            system("cls");
             break;
         case 4:
+            cout << "\nSaving game...\n";
+            wait(1000);
+            system("cls");
+            break;
+        case 5:
             cout << "\nExiting game. Goodbye!\n";
+            wait(1000);
+            system("cls");
             break;
         default:
             cout << "\nInvalid option.\n";
+            wait(1000);
             break;
     }
-}while(option<1||option>4);
+}while(option<1||option>5);
 
-    return 0;
+    return option;
 }

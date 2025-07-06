@@ -1,11 +1,9 @@
+#define PROLOGO_H
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
+#include "sleep.h"
 using namespace std;
-
-void wait(int ms) {
-    Sleep(ms);
-}
 
 void cricketBeep() {
     for (int i = 0; i < 3; i++) {
@@ -16,7 +14,7 @@ void cricketBeep() {
     }
 }
 
-int main() {
+int pro() {
     cricketBeep();
     cout << "ASCII: Magna V\n";
     wait(1000);
@@ -63,7 +61,7 @@ int main() {
     cout << "ASCII: Miskho and guard talking\n";
     wait(750);
     cout << "Miskho: And what is that? How am I supposed to get it?\n";
-    cout << "GUARD: That's your problem. But I’ll give you a clue...\n";
+    cout << "GUARD: That's your problem. But I will give you a clue...\n";
     cout << "In the library, there exists a conveniently convenient manual about the Ol Koi,\n";
     cout << "containing absolutely everything, including how to (maybe) get it, step by painfully obvious step.\n";
     cout << "The university is in your hands now...\n";
@@ -78,5 +76,5 @@ int main() {
     cout << "---------THE MISSING OL KOI--------\n";
 
     getch();
-    return 0;
+    return 1;
 }
