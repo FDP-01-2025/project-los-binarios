@@ -59,7 +59,7 @@ void startReactionGame(double& money) {
         bool pressed = false;
         bool failed = false;
 
-        while (duration_cast<milliseconds>(high_resolution_clock::now() - startarrow).count() < 1250) {
+        while (duration_cast<milliseconds>(high_resolution_clock::now() - startarrow).count() < 1400) {
             if (_kbhit()) {
                 char key = toupper(_getch());
                 pressed = true;

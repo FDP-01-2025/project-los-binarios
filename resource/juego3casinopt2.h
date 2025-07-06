@@ -56,16 +56,17 @@ void playRoulette(double& money) {
     while (money > 0) {
         cout << "\nCurrent balance: $" << money << "\n";
 
+
         if (money - initialMoney >= 500) {
-            cout << "\nYOU WON TOO MUCH, BRO! The casino can't pay you more than $500 in winnings.\n";
-            cout << "Here’s your $500 profit. GO HOME AND STOP GAMBLING.\n";
+            cout << "\nYOU WON TOO MUCH, BRO! The casino can't pay you more than $500 in winnings, the economy is broken bro.\n";
+            cout << "Here is your $500 profit. GO HOME AND STOP GAMBLING.\n";
             money = initialMoney + 500;
             break;
         }
 
         if (money - initialMoney >= 300) {
             char choice;
-            cout << "You’ve won at least $300! Do you want to retire? (Y/N): ";
+            cout << "You’ve won at least $300! Do you want to retire? (Yes or no): ";
             cin >> choice;
             if (toupper(choice) == 'Y') {
                 cout << "You retired with $" << money << ". Nice move, bro.\n";
@@ -80,6 +81,13 @@ void playRoulette(double& money) {
         cout << "Enter option: ";
         int option;
         cin >> option;
+
+        if (cin.fail()) {
+    cin.clear();                   // Limpia el estado de error
+    cin.ignore(10000, '\n');       // Descarta caracteres inválidos
+    cout << "Invalid input. Please enter a number between 1 and 3.\n";
+    continue;
+}
 
         vector<int> picks;
         string chosenColor;

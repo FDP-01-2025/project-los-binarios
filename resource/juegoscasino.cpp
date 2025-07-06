@@ -4,6 +4,17 @@
 
 int main() {
     double money = 100.0;  // Dinero inicial
+    cout << "WELCOME TO EL CASINO JUGUETON\n";
+    waitSeconds(2);
+    cout << "HERE YOU HAVE THE OPPORTUNITY TO BE RICH... OR BE AS POOR AS DON BOSCO STUDENTS...\n";
+    waitSeconds(3);
+    cout << "DO YOUR BEST IN EACH GAME\n";
+    waitSeconds(2);
+    cout << "...\n";
+    waitSeconds(2);
+    cout << "QUE EMPIECE EL JUEGUETEO!!\n";
+    waitSeconds(3);
+
 
     // Juego 1: Code Game
     startCodeGame(money);

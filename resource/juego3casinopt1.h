@@ -16,6 +16,8 @@ void startRouletteGame(double& money) {
     waitSeconds(2);
     cout << "LOADING ROULETTE...\n";
     waitSeconds(2);
+    cout << "JEJEJE... SIUUUUUUU\n";
+    waitSeconds(2);
     cout << "ARE YOU READY FOR THE FINAL GAME??\n";
     waitSeconds(2);
 

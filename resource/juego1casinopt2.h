@@ -17,11 +17,11 @@ bool runCodeGame(double& money) {
         while (!correct) {
             auto now = high_resolution_clock::now();
             int elapsed = duration_cast<seconds>(now - start).count();
-            if (elapsed >= 60) {
+            if (elapsed >= 120) {
                 return false;
             }
 
-            cout << "\n⏳ Time left: " << 120 - elapsed << " seconds\n";
+            cout << "\n Time left: " << 120 - elapsed << " seconds\n";
             cout << "==== PHRASE " << (i + 1) << " ====\n";
             showEncodedPhrase(phrases[i]);
 
@@ -30,10 +30,10 @@ bool runCodeGame(double& money) {
             getline(cin, input);
 
             if (clean(input) == clean(phrases[i].realPhrase)) {
-                cout << "✅ Correct!\n";
+                cout << " Correct!\n";
                 correct = true;
             } else {
-                cout << "❌ Incorrect. Try again.\n";
+                cout << " Incorrect. Try again.\n";
             }
         }
     }

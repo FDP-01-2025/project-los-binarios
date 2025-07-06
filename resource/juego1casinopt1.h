@@ -5,9 +5,13 @@
 #include "juego1casinopt2.h"
 using namespace std;
 
-// This function replaces `main()` logic and can be called from another file
+void pauseseconds(int seconds) {
+    clock_t end = clock() + seconds * CLOCKS_PER_SEC;
+    while (clock() < end) { /* espera */ }
+}
+// This function replaces main() logic and can be called from another file
 void startCodeGame(double& money) {
-    cout << "🎮 WELCOME TO THE CODE GAME!\n";
+    cout << " WELCOME TO THE CODE GAME!!\n";
     cout << "You start with $" << money << ". Solve the phrases to double your money.\n";
     cout << "You have 2 MINUTES total to solve 3 phrases.\n\n";
 
@@ -23,6 +27,6 @@ void startCodeGame(double& money) {
     }
 
     cout << " Current balance: $" << money << "\n";
+pauseseconds(5);
 }
-
 #endif
