@@ -2,7 +2,7 @@
 #define juego2casinopt1_h
 
 #include <iostream>
-#include "game.h"
+#include "juego1casinopt2.h"
 using namespace std;
 
 // This function replaces `main()` logic and can be called from another file
