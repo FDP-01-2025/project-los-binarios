@@ -44,7 +44,7 @@ char readKeyWithTimeout(int seconds) {
 }
 
 bool dodgeLaser() {
-    cout << "THE WATCHER IS CHARGING A LASER BEAM!!! \x1B[33m⚠️⚡\x1B[0m" << endl;
+    cout << "THE WATCHER IS CHARGING A LASER BEAM!!! ⚠️⚡" << endl;
     Sleep(2000);
     cout << "DODGE IT! Press the key '5' quickly to avoid damage 🏃‍♂️💨" << endl;
 
@@ -107,27 +107,11 @@ void showGameEnding(bool miskoWon) {
     } else {
         cout << "💀 MISKO DEATH 💀" << endl;
         Sleep(2000);
-        cout << "Do you want to try again? (Y/N): ";
-        char response;
-        cin >> response;
-        if (response == 'Y' || response == 'y') {
-            system("cls");
-            main();
-            return;
-        } else {
-            cout << "\nThe universe has been reset. The Watcher has fulfilled his purpose..." << endl;
-            Sleep(3000);
-            cout << "But in the new world... someone awakens.\nName: MISKO JHONES" << endl;
-            cout << "\nAnd the cycle starts again..." << endl;
-        }
     }
-
-    cout << "\nPress any key to exit the game..." << endl;
-    _getch();
 }
 
 void startGame() {
-    srand(time(0));
+    srand(static_cast<unsigned int>(time(nullptr)));
     string player = "Misko Jhones";
     string enemy = "The Watcher";
     int playerAura = MAX_AURA;
@@ -166,6 +150,7 @@ void startGame() {
                     }
                     cout << "You dealt a blow of " << damage << " to " << enemy << "." << endl;
                     enemyAura -= damage;
+                    if (enemyAura < 0) enemyAura = 0;
                     break;
                 }
                 case '2':
@@ -223,14 +208,37 @@ void startGame() {
         }
 
         if (playerAura < 0) playerAura = 0;
-        if (enemyAura < 0) enemyAura = 0;
         Sleep(2000);
     }
 
     showGameEnding(playerAura > 0);
 }
 
+void loopGame() {
+    bool playAgain = true;
+
+    while (playAgain) {
+        startGame();
+
+        if (_kbhit()) _getch(); // Clear any buffered key
+        cout << "\nDo you want to try again? (Y/N): ";
+        char response;
+        cin >> response;
+
+        if (response != 'Y' && response != 'y') {
+            playAgain = false;
+            cout << "\nThe universe has been reset. The Watcher has fulfilled his purpose..." << endl;
+            Sleep(3000);
+            cout << "But in the new world... someone awakens.\nName: MISKO JHONES" << endl;
+            cout << "\nAnd the cycle starts again..." << endl;
+        }
+    }
+
+    cout << "\nPress any key to exit the game..." << endl;
+    _getch();
+}
+
 int main() {
-    startGame();
+    loopGame();
     return 0;
 }
