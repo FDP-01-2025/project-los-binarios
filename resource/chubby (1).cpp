@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
-#include <conio.h> // Para _kbhit y _getch
+#include <conio.h> 
 
 using namespace std;
 using namespace std::this_thread;
@@ -17,7 +17,7 @@ int playerX, chaserX, jumpTurns, chaserCycles, currentFloor, goalX;
 vector<int> obstacles;
 
 void clearScreen() {
-    system("cls"); // Para Windows
+    system("cls"); 
 }
 
 void showStory() {
