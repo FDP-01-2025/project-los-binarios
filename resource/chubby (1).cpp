@@ -6,9 +6,9 @@
 #include <ctime>
 #include <algorithm>
 #include <conio.h> 
+#include "sleep.h"
 
 using namespace std;
-using namespace std::this_thread;
 using namespace std::chrono;
 
 const int WIDTH = 40;
@@ -23,33 +23,33 @@ void clearScreen() {
 void showStory() {
     clearScreen();
     cout << "Narrator:\n";
-    sleep_for(seconds(1));
+    wait(1000);
     cout << "Misko, now with enough money, enters Magna 7,\n";
-    sleep_for(seconds(2));
+    wait(2000);
     cout << "and asks to speak with José María.\n";
-    sleep_for(seconds(2));
+    wait(2000);
     cout << "He's taken to a room on the top floor where she is...\n";
-    sleep_for(seconds(3));
+    wait(3000);
     cout << "and upon opening the door, Misko sees her sitting at a desk,\n";
-    sleep_for(seconds(3));
+    wait(3000);
     cout << "from which the Joystick can be seen in a small glass dome.\n";
-    sleep_for(seconds(3));
+    wait(3000);
     cout << "Misko explains his need, but she refuses to give him the Joystick,\n";
-    sleep_for(seconds(3));
+    wait(3000);
     cout << "because it was the last thing her beloved husband Roberto left her,\n";
-    sleep_for(seconds(3));
+    wait(3000);
     cout << "before escaping and disappearing forever.\n";
-    sleep_for(seconds(3));
+    wait(3000);
     cout << "Misko tells her he knows Roberto...\n";
-    sleep_for(seconds(2));
+    wait(3000);
     cout << "but she gets upset for meddling with her feelings and gordis illusions 😡,\n";
-    sleep_for(seconds(3));
+    wait(3000);
     cout << "and kicks him out of her room!\n";
-    sleep_for(seconds(2));
+    wait(2000);
     cout << "Misko breaks the glass, grabs the Joystick and starts running...\n";
-    sleep_for(seconds(3));
+    wait(3000);
     cout << "This is where the chase begins: ESCAPE FROM THE CHUBBY! 🚓🏃‍♂️\n";
-    sleep_for(seconds(3));
+    wait(3000);
 }
 
 void showInstructions() {
@@ -102,11 +102,11 @@ void countdown() {
     clearScreen();
     for (int i = 3; i > 0; --i) {
         cout << "\nStarting in... " << i << " ⏳" << endl;
-        sleep_for(seconds(1));
+        wait(1000);
         clearScreen();
     }
     cout << "\nRUN! 🏋🏃‍♂️💨\n";
-    sleep_for(seconds(1));
+    wait(1000);
 }
 
 void generateObstacles(int amount) {
@@ -168,14 +168,14 @@ bool playFloor() {
             return false;
         } else if (playerX >= goalX) {
             cout << "\nYou reached the next floor! 🏢👇\n";
-            sleep_for(seconds(2));
+            wait(2000);
             return true;
         }
 
         if (jumpTurns > 0)
             jumpTurns--;
 
-        sleep_for(milliseconds(150));
+        wait(150);
     }
 }
 
@@ -195,7 +195,14 @@ int main() {
             bool passed = playFloor();
             if (!passed) {
                 cout << "\nTry again, but slimmer 😤\n";
-                break;
+                cout << "\nDo you want to try again? (s = yes / any other key = exit): ";
+                char option;
+                cin >> option;
+                cin.ignore();
+                if (option != 's' && option != 'S')
+                    return 0; // ❌ PERDIÓ Y NO QUIERE INTENTAR DE NUEVO
+                else
+                    break; // Volver a jugar desde el inicio
             }
             currentFloor++;
         }
@@ -204,13 +211,13 @@ int main() {
             clearScreen();
             cout << "\nTHE CHUBBY GOT STUCK IN THE DOOR, SHE CAN'T CHASE YOU ANYMORE.\n";
             cout << "YOU DID IT, MISKO! 🎉🌟\n";
-            sleep_for(seconds(2));
+            wait(2000);
             cout << "\nMisko manages to escape because José María doesn't fit through the exit door,\n";
-            sleep_for(seconds(3));
+            wait(3000);
             cout << "but Misko leaves her the rosary, saying Roberto would've wanted her to have it...\n";
-            sleep_for(seconds(3));
+            wait(3000);
             cout << "Through tears, the chubby, before he leaves, grants him a useless wooden shield.\n";
-            sleep_for(seconds(3));
+            wait(3000);
             cout << "\n🎁 You obtained: Useless Wooden Shield 🪵\n";
             won = true;
         }
@@ -219,9 +226,8 @@ int main() {
         char option;
         cin >> option;
         cin.ignore();
-        if (option != 's' && option != 'S') break;
+        if (option != 's' && option != 'S')
+            return 1; // ✅ GANÓ Y NO QUIERE JUGAR DE NUEVO
         showIntro = false;
     }
-
-    return 0;
 }
