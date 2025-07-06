@@ -96,15 +96,15 @@ bool playStatueGame(bool showIntro) {
 bool finalBookPuzzle() {
     cout << "\nA mysterious glowing figure appears...\n";
     Sleep(2000);
-    cout << "\"...You did it, Misko...\"\n";
+    cout << ""...You did it, Misko..."\n";
     Sleep(2000);
-    cout << "\"I am the Conveniently Convenient Guardian of the Ol' Koi Manual, but you can call me Roberto.\"\n";
+    cout << ""I am the Conveniently Convenient Guardian of the Ol' Koi Manual, but you can call me Roberto."\n";
     Sleep(3000);
-    cout << "\"You have completed the trial of the glowing statues.\"\n";
+    cout << ""You have completed the trial of the glowing statues."\n";
     Sleep(3000);
-    cout << "\"Now, only one task remains.\"\n";
+    cout << ""Now, only one task remains."\n";
     Sleep(2000);
-    cout << "\"Before you are four books. One of them contains the knowledge of the Ol' Koi...\"\n";
+    cout << ""Before you are four books. One of them contains the knowledge of the Ol' Koi..."\n";
     Sleep(3000);
     cout << "Choose a book:\n";
     cout << "1. Cooking with Koi\n2. The History of Convenient Things\n3. Ol' Koi Manual: Possibly Real Edition\n4. Gardening for the Lazy\nYour choice: ";
@@ -112,22 +112,29 @@ bool finalBookPuzzle() {
     int choice;
     cin >> choice;
 
+    if (cin.fail() || choice < 1 || choice > 4) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "\n"That... was not a valid book. Try again from the beginning."\n";
+        return false;
+    }
+
     if (choice == 3) {
         Sleep(2000);
-        cout << "\n\"You have chosen... wisely.\"\n";
+        cout << "\n"You have chosen... wisely."\n";
         Sleep(3000);
         cout << "\nThe floor begins to shake violently...\n";
         Sleep(2000);
-        cout << "\"Misko! You must escape!\"\n";
+        cout << ""Misko! You must escape!"\n";
         Sleep(2000);
-        cout << "\"No... I shall stay. I owe 24 years of child support. This is my destiny.\"\n";
+        cout << ""No... I shall stay. I owe 24 years of child support. This is my destiny."\n";
         Sleep(3000);
         cout << "\nMisko: \"ROBERTOOOOO!! I will find the Ol' Koi... for you.\"\n";
         Sleep(2000);
         cout << "*Tears stream down Misko's face as the library crumbles...*\n";
         return true;
     } else {
-        cout << "\n\"Incorrect. The true path must be walked again...\"\n";
+        cout << "\n"Incorrect. The true path must be walked again..."\n";
         return false;
     }
 }
@@ -145,6 +152,7 @@ int main() {
         if (!passedStatues) {
             cout << "\n===🥀💀 MISKO-DEATH 💀🥀===\n";
             cout << "You died. Would you like to try again? (y/n): ";
+            cin.ignore();
             cin >> retry;
             if (retry == 'n' || retry == 'N') {
                 cout << "Returning to the main menu...\n";
