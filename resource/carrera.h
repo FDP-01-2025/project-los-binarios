@@ -1,11 +1,10 @@
+#define CARRERA_H
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
+#include "sleep.h"
 using namespace std;
 
-void wait(int ms) {
-    Sleep(ms);
-}
 
 void imprimirPista(int posMiskho, int posRival) {
     system("cls");
@@ -87,7 +86,7 @@ int carrera(int rivalVelocidadMs) {
 }
 
 
-int main() {
+int race() {
     int rivalVelocidadMs = 400, resultado;
     cout << "The conveniently convenient Ol Koi manual starts explaining to Miskho that only 2 parts are missing\n";
     cout << "and the Ol Koi will be his.\n";
@@ -163,5 +162,5 @@ int main() {
     }
 
     getch();
-    return 0;
+    return 1;
 }
