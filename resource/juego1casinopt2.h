@@ -21,7 +21,7 @@ bool runCodeGame(double& money) {
                 return false;
             }
 
-            cout << "\n⏳ Time left: " << 60 - elapsed << " seconds\n";
+            cout << "\n⏳ Time left: " << 120 - elapsed << " seconds\n";
             cout << "==== PHRASE " << (i + 1) << " ====\n";
             showEncodedPhrase(phrases[i]);
 

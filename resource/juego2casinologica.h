@@ -11,7 +11,7 @@
 using namespace std;
 using namespace std::chrono;
 
-void startgame(double& money) {
+void startReactionGame(double& money) {
     srand(time(0));
     int attempts = 3;
     const int gametime = 45;
@@ -94,22 +94,3 @@ void startgame(double& money) {
 }
 
 #endif
-
-/*#include "juego2casinologica.h"
-
-int main() {
-    double money;
-
-    // Aquí suponemos que ya jugaste el primer juego
-    // y `money` fue actualizado con su resultado:
-    cout << "Enter money from previous game: $";
-    cin >> money;
-
-    // Iniciás el segundo juego
-    startgame(money);
-
-    // Verificás el resultado
-    cout << "\n💰 Money after Game 2: $" << money << "\n";
-
-    return 0;
-}

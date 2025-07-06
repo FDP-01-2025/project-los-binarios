@@ -9,7 +9,7 @@ using namespace std;
 void startCodeGame(double& money) {
     cout << "🎮 WELCOME TO THE CODE GAME!\n";
     cout << "You start with $" << money << ". Solve the phrases to double your money.\n";
-    cout << "You have 60 seconds total to solve 3 phrases.\n\n";
+    cout << "You have 2 MINUTES total to solve 3 phrases.\n\n";
 
     bool success = runCodeGame(money);
 
@@ -26,16 +26,3 @@ void startCodeGame(double& money) {
 }
 
 #endif
-
-/*#include "juego1casinopt1.h"
-
-int main() {
-    double money = 100.0;
-    startCodeGame(money);
-
-    // Example: continue with next game
-    // startRouletteGame(money);
-    // startReactionGame(money);
-
-    return 0;
-}*/
