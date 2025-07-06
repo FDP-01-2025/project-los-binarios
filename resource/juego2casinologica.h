@@ -34,7 +34,7 @@ void startReactionGame(double& money) {
     cout << "\nTHE GAME STARTS IN: ";
     for (int i = 10; i >= 1; i--) {
         cout << i << "... ";
-        wait(1000);
+        waitt(1000);
     }
 
     system("cls");
@@ -83,7 +83,7 @@ void startReactionGame(double& money) {
         if (failed && attempts > 0) {
             losscounter(5, attempts);
         } else {
-            wait(500);
+            waitt(500);
             system("cls");
         }
     }

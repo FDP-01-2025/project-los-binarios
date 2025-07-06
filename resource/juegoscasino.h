@@ -1,8 +1,9 @@
+#define JUEGOSCASINO_H
 #include "juego1casinopt1.h"         // Primer juego (el de código)
 #include "juego2casinologica.h"     // Segundo juego (el de reacción)
 #include "juego3casinopt1.h"     // Tercer juego (la ruleta)
 
-int main() {
+int casino() {
     double money = 100.0;  // Dinero inicial
 
     // Juego 1: Code Game
@@ -17,7 +18,7 @@ int main() {
     startRouletteGame(money);
 
     // Al final puedes mostrar dinero total o hacer algo más
-    std::cout << "\nFinal money after all games: $" << money << "\n";
+    std::cout << "\nFinal money after all games: $" << 100<<" (taxes always takes everyithing and only left you 100" "\n";
 
-    return 0;
+    return 1;
 }
