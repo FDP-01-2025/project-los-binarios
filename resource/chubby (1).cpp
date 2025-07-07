@@ -1,3 +1,5 @@
+#ifndef CHUBBY_H
+#define CHUBBY_H
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -16,17 +18,17 @@ const int TOTAL_FLOORS = 3;
 int playerX, chaserX, jumpTurns, chaserCycles, currentFloor, goalX;
 vector<int> obstacles;
 
-void clearScreen() {
+void clearScren() {
     system("cls"); 
 }
 
-void showStory() {
-    clearScreen();
+void showStory4() {
+    clearScren();
     cout << "Narrator:\n";
     wait(1000);
     cout << "Misko, now with enough money, enters Magna 7,\n";
     wait(2000);
-    cout << "and asks to speak with José María.\n";
+    cout << "and asks to speak with Jose Maria.\n";
     wait(2000);
     cout << "He's taken to a room on the top floor where she is...\n";
     wait(3000);
@@ -53,7 +55,7 @@ void showStory() {
 }
 
 void showInstructions() {
-    clearScreen();
+    clearScren();
     cout << "🕹️  Game Instructions:\n\n";
     cout << "➡️  Press 'd' to move forward\n";
     cout << "🥴️  Press 'w' to JUMP over obstacles (jump two spaces forward)\n";
@@ -65,7 +67,7 @@ void showInstructions() {
 }
 
 void draw(int player, int chaser, const vector<int>& obs, bool jumping) {
-    clearScreen();
+    clearScren();
     cout << "🏢 Floor " << currentFloor << " of " << TOTAL_FLOORS << endl;
 
     for (int i = 0; i < WIDTH; ++i) {
@@ -78,15 +80,15 @@ void draw(int player, int chaser, const vector<int>& obs, bool jumping) {
 
     for (int i = 0; i < WIDTH; ++i) {
         if (i == player && i == chaser)
-            cout << "💥";
+            cout << "E";
         else if (i == player && !jumping)
-            cout << "🏃";
+            cout << "M";
         else if (i == chaser)
-            cout << "🚓";
+            cout << "G";
         else if (i == goalX)
-            cout << "🏋";
+            cout << "A";
         else if (find(obs.begin(), obs.end(), i) != obs.end())
-            cout << "🪨";
+            cout << "P";
         else
             cout << "-";
     }
@@ -99,7 +101,7 @@ void draw(int player, int chaser, const vector<int>& obs, bool jumping) {
 }
 
 void countdown() {
-    clearScreen();
+    clearScren();
     for (int i = 3; i > 0; --i) {
         cout << "\nStarting in... " << i << " ⏳" << endl;
         wait(1000);
@@ -179,55 +181,56 @@ bool playFloor() {
     }
 }
 
-int main() {
+int chubby() {
     bool showIntro = true;
 
     while (true) {
         currentFloor = 1;
-        bool won = false;
 
-        if (showIntro)
-            showStory();
+        if (showIntro) {
+            showStory4();       // 🎬 Mostrar historia SOLO una vez
+            showInstructions(); // 📜 Mostrar instrucciones también la primera vez
+            showIntro = false;
+        }
 
-        showInstructions();
+        bool won = true;
 
         while (currentFloor <= TOTAL_FLOORS) {
             bool passed = playFloor();
             if (!passed) {
-                cout << "\nTry again, but slimmer 😤\n";
-                cout << "\nDo you want to try again? (s = yes / any other key = exit): ";
-                char option;
-                cin >> option;
-                cin.ignore();
-                if (option != 's' && option != 'S')
-                    return 0; // ❌ PERDIÓ Y NO QUIERE INTENTAR DE NUEVO
-                else
-                    break; // Volver a jugar desde el inicio
+                won = false;
+                break;
             }
             currentFloor++;
         }
 
-        if (currentFloor > TOTAL_FLOORS) {
-            clearScreen();
-            cout << "\nTHE CHUBBY GOT STUCK IN THE DOOR, SHE CAN'T CHASE YOU ANYMORE.\n";
-            cout << "YOU DID IT, MISKO! 🎉🌟\n";
-            wait(2000);
-            cout << "\nMisko manages to escape because José María doesn't fit through the exit door,\n";
-            wait(3000);
-            cout << "but Misko leaves her the rosary, saying Roberto would've wanted her to have it...\n";
-            wait(3000);
-            cout << "Through tears, the chubby, before he leaves, grants him a useless wooden shield.\n";
-            wait(3000);
-            cout << "\n🎁 You obtained: Useless Wooden Shield 🪵\n";
-            won = true;
+        if (!won) {
+            cout << "\nTry again, but slimmer 😤\n";
+            cout << "\nDo you want to try again? (s = yes / any other key = exit): ";
+            char option;
+            cin >> option;
+            cin.ignore();
+            if (option == 's' || option == 'S') {
+                continue; // Reinicia el juego sin volver a mostrar la historia
+            } else {
+                return 0; // Sale al menú
+            }
         }
 
-        cout << "\nDo you want to try again? (s = yes / any other key = exit): ";
-        char option;
-        cin >> option;
-        cin.ignore();
-        if (option != 's' && option != 'S')
-            return 1; // ✅ GANÓ Y NO QUIERE JUGAR DE NUEVO
-        showIntro = false;
+        // ✅ Si GANÓ, muestra solo el final y REGRESA AL MENÚ automáticamente
+        clearScren();
+        cout << "\nTHE CHUBBY GOT STUCK IN THE DOOR, SHE CAN'T CHASE YOU ANYMORE.\n";
+        cout << "YOU DID IT, MISKO! 🎉🌟\n";
+        wait(2000);
+        cout << "\nMisko manages to escape because José María doesn't fit through the exit door,\n";
+        wait(3000);
+        cout << "but Misko leaves her the rosary, saying Roberto would've wanted her to have it...\n";
+        wait(3000);
+        cout << "Through tears, the chubby, before he leaves, grants him a useless wooden shield.\n";
+        wait(3000);
+        cout << "\n🎁 You obtained: Useless Wooden Shield 🪵\n";
+
+        return 1; // 🟢 Ganó y vuelve al menú sin preguntar nada más
     }
 }
+#endif
