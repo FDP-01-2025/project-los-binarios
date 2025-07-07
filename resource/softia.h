@@ -1,3 +1,5 @@
+#ifndef SOFTIA_H
+#define SOFTIA_H
 #include <iostream>
 #include <vector>
 #include <conio.h>
@@ -6,13 +8,13 @@
 
 using namespace std;
 
-const int WIDTH = 20;
+const int softia_WIDTH = 20;
 const int HEIGHT = 12;
 const int DEFENSE_LINE = HEIGHT - 2;
-const int MAX_HEALTH = 10;
+const int MAX_HEALTH = 15;
 
-char board[HEIGHT][WIDTH];
-int playerX = WIDTH / 2;
+char board[HEIGHT][softia_WIDTH];
+int playerY = softia_WIDTH / 2;
 int softIA_health = MAX_HEALTH;
 
 struct Enemy {
@@ -46,7 +48,7 @@ void showIntro() {
 void drawBoard() {
     system("cls");
     for (int i = 0; i < HEIGHT; ++i)
-        for (int j = 0; j < WIDTH; ++j)
+        for (int j = 0; j < softia_WIDTH; ++j)
             board[i][j] = ' ';
     for (auto& e : enemies)
         if (e.y >= 0 && e.y < HEIGHT)
@@ -54,11 +56,11 @@ void drawBoard() {
     for (auto& b : bullets)
         if (b.first >= 0 && b.first < HEIGHT)
             board[b.first][b.second] = '|';
-    for (int j = 0; j < WIDTH; ++j)
+    for (int j = 0; j < softia_WIDTH; ++j)
         board[DEFENSE_LINE][j] = '=';
-    board[HEIGHT - 1][playerX] = '^';
+    board[HEIGHT - 1][playerY] = '^';
     for (int i = 0; i < HEIGHT; ++i) {
-        for (int j = 0; j < WIDTH; ++j)
+        for (int j = 0; j < softia_WIDTH; ++j)
             cout << board[i][j];
         cout << endl;
     }
@@ -108,17 +110,17 @@ void checkDefenseLine() {
     enemies = remainingEnemies;
 }
 
-void gameLoop() {
+int gameLoop() {
     int currentLevel = 1;
 
     while (currentLevel <= 3) {
         bullets.clear();
         enemies.clear();
-        playerX = WIDTH / 2;
+        playerY = softia_WIDTH / 2;
 
         int amount = 10 + (currentLevel - 1) * 5;
         for (int i = 0; i < amount; i++) {
-            int randomX = rand() % WIDTH;
+            int randomX = rand() % softia_WIDTH;
             enemies.push_back({1, randomX});
         }
 
@@ -149,15 +151,15 @@ void gameLoop() {
 
             if (_kbhit()) {
                 char key = _getch();
-                if (key == 'a' && playerX > 0)
-                    playerX--;
-                else if (key == 'd' && playerX < WIDTH - 1)
-                    playerX++;
+                if (key == 'a' && playerY > 0)
+                    playerY--;
+                else if (key == 'd' && playerY < softia_WIDTH - 1)
+                    playerY++;
                 else if (key == 'w')
-                    bullets.push_back({HEIGHT - 2, playerX});
+                    bullets.push_back({HEIGHT - 2, playerY});
                 else if (key == 'q') {
                     running = false;
-                    return;
+                    return 0;
                 }
             }
 
@@ -171,7 +173,7 @@ void gameLoop() {
             if (softIA_health <= 0) {
                 drawBoard();
                 cout << "\n💀 SoftIA has been corrupted... GAME OVER 💀\n";
-                return;
+                return 0;
             }
 
             if (enemies.empty()) {
@@ -192,10 +194,13 @@ void gameLoop() {
     drawBoard();
     cout << "\n🎉 SoftIA has been fully saved and the OL KOI is yours! 🎉\n";
     sleepText("Grateful, SoftIA gives you the 16K screen — the final piece of the OL KOI.");
+    return 1;
 }
 
-int main() {
+int softia() {
+    int a; 
     showIntro();
-    gameLoop();
-    return 0;
+    a = gameLoop();
+    return a;
 }
+#endif

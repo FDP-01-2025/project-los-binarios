@@ -9,6 +9,8 @@
 #include "juegoscasino.h"
 #include "statues.h"
 #include "finalBattle.h"
+#include "softia.h"
+#include "chubby.h"
 using namespace std;
 
 struct Player {
@@ -30,15 +32,17 @@ int historia(int progress) {
             break;
         case 3:
             progress += casino(); 
-            if(progress>4){
+            if(progress>3){
                 jugador.money += 100;
             } 
             break;
         case 4:
-            progress += pro(); break;
+            progress += chubby(); break;
         case 5:
-            progress += race(); break;
-        case 6:
+            progress += race(); break; 
+        case 6: 
+            progress += softia(); break;
+        case 7:
             progress += battle(); break;
         default:
             cout << "You have completed the game!\n";
