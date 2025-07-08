@@ -1,4 +1,4 @@
-#define POLI_H
+#define ARCHERY_H
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
@@ -6,53 +6,54 @@
 #include "sleep.h"
 using namespace std;
 
-
+//generates the random position of the arrow
 int randomPosition() {
     return 1 + rand() % 3; 
 }
-
-void fondo(int flecha, int cubo, string flechas[]) {
+//shows where the cube is
+void background(int arrow, int square, string arrows[]) {
     system("cls");
 
     cout << "=============================\n";
-    cout << (cubo == 1 ? "       ⬜" : "          ") << "\n";
-    cout << "    " << flechas[flecha - 1];
-    if (cubo == 2)
+    cout << (square == 1 ? "       ⬜" : "          ") << "\n";
+    cout << "    " << arrows[arrow - 1];
+    if (square == 2)
         cout << "    ⬜";
     cout << "\n";
-    cout << (cubo == 3 ? "       ⬜" : "          ") << "\n";
+    cout << (square == 3 ? "       ⬜" : "          ") << "\n";
 
     cout << "=============================\n";
     cout << "Press X when you consider the arrow points to the target\n";
 }
+//the principal game
+bool game(int speed) {
+    string arrows[] = { "↗", "→", "↘" };
+    int arrow, square;
+    bool done = false;
 
-bool game(int velocidadMs) {
-    string flechas[] = { "↗", "→", "↘" };
-    int flecha, cubo;
-    bool acertado = false;
+    int maxTime = 8;
+    int time = 0;
 
-    int tiempoMax = 8;
-    int tiempo = 0;
+    int steps = speed / 100;
+    if(steps < 1) steps = 1;
 
-    int pasos = velocidadMs / 100;
-    if(pasos < 1) pasos = 1;
+    while (time < maxTime && !done) {
+        arrow = randomPosition();
+        square = randomPosition();
 
-    while (tiempo < tiempoMax && !acertado) {
-        flecha = randomPosition();
-        cubo = randomPosition();
+        background(arrow, square, arrows);
 
-        fondo(flecha, cubo, flechas);
-
-        for (int i = 0; i < pasos; ++i) {
-            if (_kbhit()) {
+        for (int i = 0; i < steps; ++i) {
+            if (_kbhit()) { //detects if any key was pressed, in case it was pressed, evaluated if the key pressed was x
                 char tecla = _getch();
                 if (tecla == 'x' || tecla == 'X') {
-                    return flecha == cubo;
+                    return arrow == square;
                 }
             }
             wait(100);
         }
-        tiempo++;
+        //
+        time++;
     }
 
     return false;
@@ -65,10 +66,26 @@ int archery(){
     int instruction=1, aux=1;
     cout << "The Conveniently Convenient Manual tells Miskho that the first part of the Ol' Koi is in the UCA Sports Center." << endl;
     cout << "Miskho's adventure begins..." << endl;
-    cout << "[Miskho ASCII art here]" << endl;
     wait(8000);
     system("cls");
-    cout << "[ASCII: UCA Sports Center]" << endl;
+    cout << "        _________________________________________        \n";
+    cout << "       |                                         |       \n";
+    cout << "       |                                         |       \n";
+    cout << "       |                                         |       \n";
+    cout << "       |                                         |       \n";
+    cout << "       |                                         |       \n";
+    cout << "       |                                         |       \n";
+    cout << "       |   ___                              ___  |       \n";
+    cout << "       |  |   |                            |   | |       \n";
+    cout << "       |  |   |                            |   | |       \n";
+    cout << "       |  |___|                            |___| |       \n";
+    cout << "       |                                         |       \n";
+    cout << "       |   O       O                             |       \n";
+    cout << "       |  /|\\    /|\\                           |       \n";
+    cout << "       |  / \\    / \\                           |       \n";
+    cout << "       |_________________________________________|       \n";
+    cout << "                    UCA FUTBOL FIELD           \n";
+
     cout << "Manual: You'll have to face Mister T in an archery competition to get the golden joystick." << endl;
     Beep(1500,200);
     cout << "Mister T: Hey Miskho, I've been waiting for you." << endl;
@@ -86,11 +103,28 @@ int archery(){
             wait(1000);
             system("cls");
             cout << "Mister T: A few years ago, I was the national archery champion. I loved it — this means EVERYTHING to me." << endl;
-            cout << "[ASCII bow art here]" << endl;
+            cout << "         )" << '\n';
+            cout << "      //  |>" << '\n';
+            cout << "     //   |" << '\n';
+            cout << "    (     |" << '\n';
+            cout << "     \\   |" << '\n';
+            cout << "      \\  |>" << '\n';
+            cout << "         )" << '\n';
             wait(6500);
             system("cls");
             cout << "The Emperor gave me this as a gift after I became champion:" << endl;
-            cout << "[ASCII joystick art here]" << endl;
+            cout << "      _______\n";
+            cout << "     /       \\\n";
+            cout << "    |         |\n";
+            cout << "    |         |\n";
+            cout << "     \\        /\n";
+            cout << "      -------\n";
+            cout << "         |\n";
+            cout << "         |\n";
+            cout << "        / \\\n";
+            cout << "       /   \\\n";
+            cout << "      /_____\\" << endl;
+            cout<<"         JOYSTICK"<<endl;
             wait(5000);
             system("cls");
             cout << "Anyone who wants it must beat me in an archery match." << endl;
@@ -124,9 +158,11 @@ int archery(){
 
     cout << "Mister T: So, GET READY FOR AN INTENSE BATTLE!" << endl;
     wait(3000);
-
+    //counter of wins
     int wins = 0;
+    //state of the game
     bool perder = false;
+    //speed of arrows changing position
     int velocidad = 700;
 
     while (wins < 5 && !perder) {
@@ -150,8 +186,18 @@ int archery(){
     cout << "But..." << endl;
     cout << "Something's wrong... IT'S MISTER T HAVING A SUGAR LOW!" << endl;
     cout << "Random background character: Oh no, not again! Hurry, Miskho — get him a Coke!" << endl;
-    cout << "[ASCII Coca-Cola]" << endl;
-    wait(10000);
+    wait(2000);
+    cout << "     _______\n";
+    cout << "    /       \\\n";
+    cout << "   |         |\n";
+    cout << "   |  C O L A|\n";
+    cout << "   |         |\n";
+    cout << "    \\_______/\n";
+    cout << "    |       |\n";
+    cout << "    |       |\n";
+    cout << "    |       |\n";
+    cout << "    |_______|\n";
+    wait(9000);
     system("cls");
     cout << "Thanks, Miskho... I really get excited with this stuff." << endl;
     cout << "You really saved me this time. I don't care if you won or lost." << endl;
@@ -164,6 +210,6 @@ int archery(){
 
     cout << "\nPress any key to exit...";
     getch();
-
+    //retuns 1 because it menas game win and advance history
     return 1;
 }

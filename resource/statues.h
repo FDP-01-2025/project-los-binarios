@@ -7,6 +7,7 @@
 
 using namespace std;
 
+//function just to show history
 void narrateIntro() {
     cout << "=== Misko Jhones and the Conveniently Convenient Trial of the Glowing Statues ===\n";
     Sleep(2000);
@@ -31,23 +32,23 @@ void narrateIntro() {
     cout << "\nNarrator: Your trial begins... now.\n\n";
     Sleep(3000);
 }
-
+//main function of the minigame
 bool playStatueGame(bool showIntro) {
-    const int maxSteps = 30;
-    const int requiredSteps = 30;
-    int steps = 0;
+    const int maxSteps = 30; //this will be how large we want the race
+    const int requiredSteps = 30; //an auxiliary to complete the game
+    int steps = 0; // countdown of our steps
     int totalKeyPresses = 0;
 
     if (showIntro) narrateIntro();
 
     while (true) {
-        if (totalKeyPresses >= maxSteps) {
+        if (totalKeyPresses >= maxSteps) { 
             cout << "\nYou've exhausted your 30 steps without reaching the end.\n";
             cout << "The statues awaken and turn you to stone.\n";
-            cout << "\n===🥀💀 MISKO-DEATH 💀🥀===\n";
+            cout << "\n===== MISKO-DEATH =====\n";
             return false;
         }
-
+        //when the statues are with the eyes opened, or close, its done randomly
         bool eyesClosed = rand() % 2 == 0;
         if (eyesClosed)
             cout << "The statues' eyes are closed... Move now! (press 'w' multiple times)\n";
@@ -70,7 +71,7 @@ bool playStatueGame(bool showIntro) {
                             cout << "Step taken! Progress: " << steps << "/" << requiredSteps << "\n";
                         }
                     } else {
-                        cout << "\n===🥀💀 MISKO-DEATH 💀🥀===\n";
+                        cout << "\n===== MISKO-DEATH =====\n";
                         cout << "You moved while the statues were watching. You are now a stone decoration.\n";
                         return false;
                     }
@@ -110,6 +111,7 @@ bool finalBookPuzzle() {
 
     if (cin.fail() || choice < 1 || choice > 4) {
         cin.clear();
+        //cin ignore just to be sure to doesnt take a wrong input 
         cin.ignore(1000, '\n');
         cout << "\n\"That... was not a valid book. Try again from the beginning.\"\n";
         return false;
@@ -146,7 +148,7 @@ int statues() {
         firstTime = false;
 
         if (!passedStatues) {
-            cout << "\n===🥀💀 MISKO-DEATH 💀🥀===\n";
+            cout << "\n===== MISKO-DEATH =====\n";
             cout << "You died. Would you like to try again? (y/n): ";
             cin >> retry;
             if (retry == 'n' || retry == 'N') {

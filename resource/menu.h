@@ -4,7 +4,7 @@
 #include "sleep.h"
 using namespace std;
 
-
+//will show this after every part of the history
 int menu() {
     int option;
     do{
@@ -58,6 +58,6 @@ int menu() {
             break;
     }
 }while(option<1||option>5);
-
+    //returns option because thats decide what is the main gonna do
     return option;
 }

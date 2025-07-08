@@ -2,7 +2,7 @@
 #define SLEEP_H
 
 #include <windows.h>
-
+//This function is used in almost every game, it's for exactly its names says, wait seconds until do something else
 void wait(int ms){
     Sleep(ms);
 }

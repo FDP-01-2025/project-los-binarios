@@ -3,8 +3,8 @@
 #include <conio.h>
 #include <cctype>
 #include "carrera.h"
-#include "poli.h"
-#include "prologo.h"
+#include "archery.h"
+#include "prologue.h"
 #include "menu.h"
 #include "juegoscasino.h"
 #include "statues.h"
@@ -23,7 +23,7 @@ Player jugador;
 int historia(int progress) {
     switch (progress) {
         case 0:
-            progress += pro(); break;
+            progress += prologue(); break;
         case 1:
             progress += statues(); break;
         case 2:
