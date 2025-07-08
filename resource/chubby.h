@@ -14,7 +14,7 @@ using namespace std;
 using namespace std::chrono;
 
 const int WIDTH = 40;
-const int TOTAL_FLOORS = 3;
+const int TOTAL_FLOORS = 3; //cantidad the niveles
 int playerX, chaserX, jumpTurns, chaserCycles, currentFloor, goalX;
 vector<int> obstacles;
 
@@ -23,6 +23,7 @@ void clearScren() {
 }
 
 void showStory4() {
+    wait(2000);
     clearScren();
     cout << "Narrator:\n";
     wait(1000);
@@ -55,6 +56,7 @@ void showStory4() {
 }
 
 void showInstructions() {
+    SetConsoleOutputCP(CP_UTF8);
     clearScren();
     cout << "🕹️  Game Instructions:\n\n";
     cout << "➡️  Press 'd' to move forward\n";
@@ -68,6 +70,7 @@ void showInstructions() {
 
 void draw(int player, int chaser, const vector<int>& obs, bool jumping) {
     clearScren();
+    SetConsoleOutputCP(CP_UTF8);
     cout << "🏢 Floor " << currentFloor << " of " << TOTAL_FLOORS << endl;
 
     for (int i = 0; i < WIDTH; ++i) {
@@ -80,15 +83,15 @@ void draw(int player, int chaser, const vector<int>& obs, bool jumping) {
 
     for (int i = 0; i < WIDTH; ++i) {
         if (i == player && i == chaser)
-            cout << "E";
+            cout << "💨";
         else if (i == player && !jumping)
-            cout << "M";
+            cout << "🚶";
         else if (i == chaser)
-            cout << "G";
+            cout << "🧍‍♀️";
         else if (i == goalX)
-            cout << "A";
+            cout << "🏁";
         else if (find(obs.begin(), obs.end(), i) != obs.end())
-            cout << "P";
+            cout << "🪨";
         else
             cout << "-";
     }
@@ -101,6 +104,7 @@ void draw(int player, int chaser, const vector<int>& obs, bool jumping) {
 }
 
 void countdown() {
+    SetConsoleOutputCP(CP_UTF8);
     clearScren();
     for (int i = 3; i > 0; --i) {
         cout << "\nStarting in... " << i << " ⏳" << endl;
@@ -131,6 +135,7 @@ void generateObstacles(int amount) {
 }
 
 bool playFloor() {
+    SetConsoleOutputCP(CP_UTF8);
     playerX = WIDTH / 4;
     chaserX = 2;
     goalX = WIDTH - 1;
@@ -182,6 +187,7 @@ bool playFloor() {
 }
 
 int chubby() {
+    SetConsoleOutputCP(CP_UTF8);
     bool showIntro = true;
 
     while (true) {

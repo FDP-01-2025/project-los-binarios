@@ -2,7 +2,7 @@
 #include <fstream>
 #include <conio.h>
 #include <cctype>
-#include "carrera.h"
+#include "race.h"
 #include "archery.h"
 #include "prologue.h"
 #include "menu.h"
@@ -108,6 +108,8 @@ bool load() {
         cout << "File could not be opened.\n";
         return false;
     }
+    wait(2000);
+    system("cls");
     
 }
 
