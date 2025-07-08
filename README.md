@@ -100,9 +100,4 @@ This game was developed as part of a university project at UCA to demonstrate ma
 ### 🎮 Game Menu
 ![Game Main Menu](menu_mockup.jpeg)
 
-> Start your adventure, load progress, or exit... all in classic terminal style.
-![alt text](<WhatsApp Image 2025-07-07 at 23.43.00_25dc6c4e.jpg>)
-
-![alt text](<WhatsApp Image 2025-07-07 at 23.43.00_6d23fb3c.jpg>)
-
 
