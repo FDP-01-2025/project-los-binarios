@@ -1,4 +1,6 @@
+#ifndef FINALBATTLE_H
 #define FINALBATTLE_H
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -8,28 +10,32 @@
 
 using namespace std;
 
-const int MAX_AURA = 200;
+// Maximum AURA value for both Misko and The Watcher
+const int MAX_AURA = 150;
 
+//  Clears the console screen
 void clearScreen() {
     system("cls");
 }
 
+// 🔋Displays the AURA bar for a character using '#' and '-'
 void showAuraBar(string name, int aura) {
     int totalBars = 40;
     int filledBars = (aura * totalBars) / MAX_AURA;
 
     cout << name << " [";
     for (int i = 0; i < totalBars; ++i) {
-        if (i < filledBars) cout << "#";
-        else cout << "-";
+        cout << (i < filledBars ? '#' : '-');
     }
     cout << "] AURA: " << aura << "/" << MAX_AURA << endl;
 }
 
+//Clears any remaining keyboard input
 void clearInputBuffer() {
     while (_kbhit()) _getch();
 }
 
+// Waits for a key press within the given time limit (in seconds)
 char readKeyWithTimeout(int seconds) {
     char key = '\0';
     int attempts = seconds * 10;
@@ -44,7 +50,9 @@ char readKeyWithTimeout(int seconds) {
     return key;
 }
 
+//  dodge a laser by pressing key '5' quickly
 bool dodgeLaser() {
+    SetConsoleOutputCP(CP_UTF8);
     cout << "THE WATCHER IS CHARGING A LASER BEAM!!! ⚠️⚡" << endl;
     Sleep(2000);
     cout << "DODGE IT! Press the key '5' quickly to avoid damage 🏃‍♂️💨" << endl;
@@ -65,14 +73,18 @@ bool dodgeLaser() {
     return dodged;
 }
 
+// title screen
 void showStartScreen() {
     clearScreen();
+    SetConsoleOutputCP(CP_UTF8);
     cout << "\n🌀  PRESENTS: MISKO JHONES VS THE WATCHER 🕶️\n";
     cout << "\nPress any key to start..." << endl;
     _getch();
 }
 
+//  story intro
 void showStory() {
+    SetConsoleOutputCP(CP_UTF8);
     clearScreen();
     cout << "📜 STORY\n\n";
     cout << "The Watcher assigns Misko Jhones to mission: find the OL KOI." << endl;
@@ -90,7 +102,9 @@ void showStory() {
     _getch();
 }
 
+//  Displays the ending depending on whether Misko won
 void showGameEnding(bool miskoWon) {
+    SetConsoleOutputCP(CP_UTF8);
     clearScreen();
 
     if (miskoWon) {
@@ -104,15 +118,16 @@ void showGameEnding(bool miskoWon) {
         Sleep(4000);
         cout << "🌀 MISKO JHONES: The Missing Ol Koi 🌀" << endl;
         cout << "Play?" << endl;
-        cout << "\n...And everything begins again." << endl;
     } else {
         cout << "💀 MISKO DEATH 💀" << endl;
         Sleep(2000);
     }
 }
 
-void startGame() {
+bool startGame() {
+    SetConsoleOutputCP(CP_UTF8);
     srand(static_cast<unsigned int>(time(nullptr)));
+
     string player = "Misko Jhones";
     string enemy = "The Watcher";
     int playerAura = MAX_AURA;
@@ -128,6 +143,7 @@ void startGame() {
         showAuraBar(player, playerAura);
         showAuraBar(enemy, enemyAura);
 
+        // Player turn
         cout << "\n--- " << player << " ---" << endl;
         cout << "1. Hit | 2. Defend | 3. Charge Attack | 4. Heal" << endl;
         cout << "Press a key (1-4) within 3 seconds: ";
@@ -141,6 +157,7 @@ void startGame() {
         if (option == '\0') {
             cout << "You took too long! The Watcher is preparing to attack..." << endl;
         } else {
+            // Player action
             switch (option) {
                 case '1': {
                     int damage = rand() % 15 + 5;
@@ -151,7 +168,6 @@ void startGame() {
                     }
                     cout << "You dealt a blow of " << damage << " to " << enemy << "." << endl;
                     enemyAura -= damage;
-                    if (enemyAura < 0) enemyAura = 0;
                     break;
                 }
                 case '2':
@@ -180,6 +196,7 @@ void startGame() {
 
         if (enemyAura <= 0) break;
 
+        // Enemy turn
         showAuraBar(player, playerAura);
         showAuraBar(enemy, enemyAura);
         cout << "\n--- " << enemy << " ---" << endl;
@@ -190,6 +207,7 @@ void startGame() {
             cout << "Shield completely blocked the attack! 🛡️✨" << endl;
             defending = false;
         } else {
+            // 20% chance of laser attack
             if (rand() % 100 < 20) {
                 bool dodged = dodgeLaser();
                 if (dodged) {
@@ -212,34 +230,40 @@ void startGame() {
         Sleep(2000);
     }
 
-    showGameEnding(playerAura > 0);
+    bool miskoWon = playerAura > 0;
+    showGameEnding(miskoWon);
+    return miskoWon;
 }
 
-void loopGame() {
-    bool playAgain = true;
+// 🔁 Main game loop allowing retries if the player loses
+// Returns 1 if the player wins, 0 if they lose and choose not to retry
+int loopGame() {
+    while (true) {
+        bool won = startGame();
 
-    while (playAgain) {
-        startGame();
+        if (won) {
+            return 1; //  Won at least one game
+        }
 
-        if (_kbhit()) _getch(); // Clear any buffered key
+        //  Lost, ask to retry
+        if (_kbhit()) _getch(); // Clear key buffer
         cout << "\nDo you want to try again? (Y/N): ";
         char response;
         cin >> response;
 
         if (response != 'Y' && response != 'y') {
-            playAgain = false;
             cout << "\nThe universe has been reset. The Watcher has fulfilled his purpose..." << endl;
             Sleep(3000);
             cout << "But in the new world... someone awakens.\nName: MISKO JHONES" << endl;
             cout << "\nAnd the cycle starts again..." << endl;
+            return 0; //  Lost and chose not to continue
         }
     }
-
-    cout << "\nPress any key to exit the game..." << endl;
-    _getch();
 }
 
+// 
 int battle() {
-    loopGame();
-    return 1;
+    return loopGame();
 }
+
+#endif

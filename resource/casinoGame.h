@@ -5,6 +5,13 @@
 #include "sleep.h" 
 
 int casino() {
+    cout<<"Miskho after buying the coke to mister T run out of money"<<endl;
+    cout<<"and if he wants to visit robertos wife, he needs at least $50"<<endl;
+    cout<<"the, he got a fascinating idea"<<endl;
+    wait(8000);
+    cout<<"...";
+    wait(1500);
+    system("cls");
     double money = 100.0;  // money
     cout << "WELCOME TO EL CASINO JUGUETON\n";
     waitSeconds(2);
@@ -29,7 +36,7 @@ int casino() {
     // Game 3: Roulette Game
     startRouletteGame(money);
     std::cout << "\nFinal money after all games: $" << 100<<" (taxes always takes everyithing and only left you 100" "\n";
-    wait(3500);
+    wait(6000);
 
     return 1;
 }

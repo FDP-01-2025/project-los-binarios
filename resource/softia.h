@@ -5,6 +5,7 @@
 #include <conio.h>
 #include <windows.h>
 #include <cstdlib>
+#include "sleep.h"
 
 using namespace std;
 
@@ -25,23 +26,18 @@ struct Enemy {
 vector<Enemy> enemies;
 vector<pair<int, int>> bullets;
 
-void sleepText(const string &text, int delay = 40) {
-    for (char c : text) {
-        cout << c << flush;
-        Sleep(delay);
-    }
-    cout << endl;
-}
-
+//lore of the game
 void showIntro() {
     system("cls");
-    sleepText("The Conveniently Convenient Manual says that the last piece of the OL KOI is in the weird-smelling building...");
-    sleepText("Misko heads to the Computer Science Department...");
-    sleepText("A robotic voice screams: INTRUDER INTRUDER INTRUDER...");
-    sleepText("SoftIA tells him to help eliminate a virus that's corrupting her...");
-    sleepText("Misko puts on the VR headset...");
-    sleepText("The second-to-last game begins: THE BATTLE AGAINST THE VIRUS...");
-    sleepText("Press any key to begin...");
+    cout << "The Conveniently Convenient Manual says that the last piece of the OL KOI is in the weird-smelling building..." << endl;
+    cout << "Misko heads to the Computer Science Department..." << endl;
+    cout << "A robotic voice screams: INTRUDER INTRUDER INTRUDER..." << endl;
+    cout << "SoftIA tells him to help eliminate a virus that's corrupting her..." << endl;
+    cout << "Misko puts on the VR headset..." << endl;
+    cout << "The second-to-last game begins: THE BATTLE AGAINST THE VIRUS..." << endl;
+    cout<< "press a-d to move lef or rigth, w to shoot, good look"<<endl;
+    wait(10000);
+    cout << "Press any key to begin..." << endl;
     _getch();
 }
 
@@ -69,7 +65,7 @@ void drawBoard() {
         cout << (i < softIA_health ? '#' : ' ');
     cout << "]" << endl;
 }
-
+//update the position of the "bullets" shot by the player, moving it forwards
 void updateBullets() {
     vector<pair<int, int>> updatedBullets;
 
@@ -97,20 +93,24 @@ void moveEnemiesDown() {
     for (auto& e : enemies)
         e.y++;
 }
-
+//this function checks if the enemies have reached the "goal" in case it does, softia healt decreases with each enemy
 void checkDefenseLine() {
     vector<Enemy> remainingEnemies;
     for (auto& e : enemies) {
-        if (e.y == DEFENSE_LINE) {
+        if (e.y >= DEFENSE_LINE) {
             softIA_health--;
-        } else if (e.y < HEIGHT) {
+        } else {
             remainingEnemies.push_back(e);
         }
     }
     enemies = remainingEnemies;
 }
 
+//game
 int gameLoop() {
+    SetConsoleOutputCP(CP_UTF8);
+    //basicly de dificulty, if you want more or lees dificulty, change here
+    softIA_health = MAX_HEALTH;
     int currentLevel = 1;
 
     while (currentLevel <= 3) {
@@ -193,7 +193,8 @@ int gameLoop() {
 
     drawBoard();
     cout << "\n🎉 SoftIA has been fully saved and the OL KOI is yours! 🎉\n";
-    sleepText("Grateful, SoftIA gives you the 16K screen — the final piece of the OL KOI.");
+    cout << "Grateful, SoftIA gives you the 16K screen — the final piece of the OL KOI." << endl;
+    wait(4000);
     return 1;
 }
 
@@ -201,6 +202,7 @@ int softia() {
     int a; 
     showIntro();
     a = gameLoop();
+    wait(3000);
     return a;
 }
 #endif

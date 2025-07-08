@@ -46,6 +46,7 @@ int historia(int progress) {
             progress += battle(); break;
         default:
             cout << "You have completed the game!\n";
+            wait(3000);
             break;
     }
     return progress;

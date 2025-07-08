@@ -5,6 +5,7 @@
 #include "thirdsCasinoGamept2.h"
 using namespace std;
 
+//Introduction to casino
 void startRouletteGame(double& money) {
     cout << "\n...\n";
     waitSeconds(2);

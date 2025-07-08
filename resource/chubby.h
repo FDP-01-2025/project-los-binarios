@@ -14,14 +14,14 @@ using namespace std;
 using namespace std::chrono;
 
 const int WIDTH = 40;
-const int TOTAL_FLOORS = 3; //cantidad the niveles
+const int TOTAL_FLOORS = 3; //amount of levels
 int playerX, chaserX, jumpTurns, chaserCycles, currentFloor, goalX;
 vector<int> obstacles;
 
 void clearScren() {
     system("cls"); 
 }
-
+//story
 void showStory4() {
     wait(2000);
     clearScren();
@@ -54,7 +54,7 @@ void showStory4() {
     cout << "This is where the chase begins: ESCAPE FROM THE CHUBBY! 🚓🏃‍♂️\n";
     wait(3000);
 }
-
+//how to play the game
 void showInstructions() {
     SetConsoleOutputCP(CP_UTF8);
     clearScren();
@@ -114,7 +114,7 @@ void countdown() {
     cout << "\nRUN! 🏋🏃‍♂️💨\n";
     wait(1000);
 }
-
+//generates the random obstacles around the map
 void generateObstacles(int amount) {
     obstacles.clear();
     srand((unsigned)time(0) + currentFloor);
@@ -194,8 +194,8 @@ int chubby() {
         currentFloor = 1;
 
         if (showIntro) {
-            showStory4();       // 🎬 Mostrar historia SOLO una vez
-            showInstructions(); // 📜 Mostrar instrucciones también la primera vez
+            showStory4();       // show history only first time
+            showInstructions(); // show instruction only first time too
             showIntro = false;
         }
 
@@ -217,13 +217,13 @@ int chubby() {
             cin >> option;
             cin.ignore();
             if (option == 's' || option == 'S') {
-                continue; // Reinicia el juego sin volver a mostrar la historia
+                continue; // restart game without showing the history again
             } else {
-                return 0; // Sale al menú
+                return 0; // returns to main menu
             }
         }
 
-        // ✅ Si GANÓ, muestra solo el final y REGRESA AL MENÚ automáticamente
+        // if wins, show ending and returns to main menu
         clearScren();
         cout << "\nTHE CHUBBY GOT STUCK IN THE DOOR, SHE CAN'T CHASE YOU ANYMORE.\n";
         cout << "YOU DID IT, MISKO! 🎉🌟\n";
@@ -236,7 +236,7 @@ int chubby() {
         wait(3000);
         cout << "\n🎁 You obtained: Useless Wooden Shield 🪵\n";
 
-        return 1; // 🟢 Ganó y vuelve al menú sin preguntar nada más
+        return 1; 
     }
 }
 #endif

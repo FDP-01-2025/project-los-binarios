@@ -142,7 +142,7 @@ int prologue() {
     cout << "---------THE MISSING OL KOI--------\n";
     wait(2000);
     
-    cout<<"press any key to return to main menu";
+    cout<<"\npress any key to return to main menu";
     getch();
     return 1;
 }

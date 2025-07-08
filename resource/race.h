@@ -11,7 +11,7 @@ void track(int positionMiskho, int positionRival) {
     const int finishLine = 50;
      cout << "---------------------RACE FOR THE BATTERY ---------------------\n";
 
-    // Línea de meta
+    // Finish line to be print
     cout << "Finish line";
     for (int i = 0; i < finishLine; ++i) cout << "-";
     cout << "|\n";
@@ -29,8 +29,8 @@ void track(int positionMiskho, int positionRival) {
     for (int i = 0; i < positionMiskho; ++i) cout << " ";
     cout << " ='-( o )---( o )-'\n";
 
-    // Vigilante
-    cout << "Vigilante:|";
+    // Guard
+    cout << "Guardo:   |";
     for (int i = 0; i < positionRival; ++i) cout << " ";
     cout << "  ___/_____|___\\\\__\n";
 
@@ -45,12 +45,12 @@ void track(int positionMiskho, int positionRival) {
     cout << "\nPress [D] to advance!\n";
 }
 
-
-int raceGame(int rivalVelocidadMs) {
-    const int finishLine = 50;
-    int positionMiskho = 0, positionRival = 0;
+//takes input about speed to change dificulty of the game when the history advance
+int raceGame(int rivalSpeed) {
+    const int finishLine = 50; //position the character will have to get
+    int positionMiskho = 0, positionRival = 0; //initial position of miskho and rasputin
     DWORD lastRivalMove = GetTickCount();
-
+//prints the uptadet position of miskho and rasputin
     track(positionMiskho, positionRival);
 
     while (positionMiskho < finishLine && positionRival < finishLine) {
@@ -62,10 +62,10 @@ int raceGame(int rivalVelocidadMs) {
             }
         }
 
-        DWORD ahora = GetTickCount();
-        if (ahora - lastRivalMove >= rivalVelocidadMs) {
+        DWORD now = GetTickCount();
+        if (now - lastRivalMove >= rivalSpeed) {
             positionRival++;
-            lastRivalMove = ahora;
+            lastRivalMove = now;
             track(positionMiskho, positionRival);
         }
 
@@ -231,9 +231,11 @@ int race() {
         system("cls");
         cout<<"press any key to return to main menu...";
         getch();
+        //if you lose the race retruns 0
         return 0;
     }
     cout<<"press any key to return to main menu...";
     getch();
+    // wins return 1
     return 1;
 }
