@@ -9,7 +9,6 @@
 
 What follows is a wild and hilarious journey filled with unexpected challenges: dodging living statues, bargaining with Satan, racing electric buses, and battling corrupted AI... all with wooden equipment and a whole lot of bad luck.
 
-How to play: Download the folder "Misko Jhones.zip". After the download finishes, unzip the folder. When the process is complete, double-click the file miskho.exe twice. Enjoy the game!
 
 ---
 
@@ -51,6 +50,7 @@ Players can:
 ---
 
 ## ⚙️ Compilation Instructions
+How to play: Download the folder "Misko Jhones.zip". After the download finishes, unzip the folder. When the process is complete, double-click the file miskho.exe twice. Enjoy the game!
 
 To compile the full game on Windows:
 
@@ -101,7 +101,7 @@ This game was developed as part of a university project at UCA to demonstrate ma
 ![Game Main Menu](menu_mockup.jpeg)
 
 > Start your adventure, load progress, or exit... all in classic terminal style.
-![alt text](<WhatsApp Image 2025-07-07 at 23.43.00_12c0d58e.jpg>)
+![alt text](<WhatsApp Image 2025-07-07 at 23.43.00_25dc6c4e.jpg>)
 
 ![alt text](<WhatsApp Image 2025-07-07 at 23.43.00_6d23fb3c.jpg>)
 
