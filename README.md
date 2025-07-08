@@ -88,6 +88,21 @@ This game was developed as part of a university project at UCA to demonstrate ma
 **➡️ Launch the game and uncover the secret of the OL KOI!**
 
 ---
+## 🖼 Gameplay Mockups
 
+### 🔐 Security Guard Scene
+![Guard enters Magna V](guard_scene.jpeg)
+
+> The UCA security guard walks into Magna V…
+
+---
+
+### 🎮 Game Menu
+![Game Main Menu](menu_mockup.jpeg)
+
+> Start your adventure, load progress, or exit... all in classic terminal style.
+![alt text](<WhatsApp Image 2025-07-07 at 23.43.00_12c0d58e.jpg>)
+
+![alt text](<WhatsApp Image 2025-07-07 at 23.43.00_6d23fb3c.jpg>)
 
 
