@@ -1,12 +1,12 @@
-#ifndef juego3casinopt2_h
-#define juego3casinopt2_h
+#ifndef THIRDSCASINOGAMEPT2_H
+#define THIRDCSASINOGAMEPT2_H
 
 #include <iostream>
 #include <vector>
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
-#include "juego3casinopt3.h"
+#include "thirdsCasinoGamept3.h"
 using namespace std;
 
 struct Slot {
@@ -66,7 +66,7 @@ void playRoulette(double& money) {
 
         if (money - initialMoney >= 300) {
             char choice;
-            cout << "You’ve won at least $300! Do you want to retire? (Yes or no): ";
+            cout << "You have won at least $300! Do you want to retire? press y to Yes or any other key to no): ";
             cin >> choice;
             if (toupper(choice) == 'Y') {
                 cout << "You retired with $" << money << ". Nice move, bro.\n";
@@ -83,8 +83,8 @@ void playRoulette(double& money) {
         cin >> option;
 
         if (cin.fail()) {
-    cin.clear();                   // Limpia el estado de error
-    cin.ignore(10000, '\n');       // Descarta caracteres inválidos
+    cin.clear();                   // clears fails option
+    cin.ignore(10000, '\n');       // ignore unnecessary characteres
     cout << "Invalid input. Please enter a number between 1 and 3.\n";
     continue;
 }

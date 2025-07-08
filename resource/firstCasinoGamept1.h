@@ -1,8 +1,8 @@
-#ifndef juego2casinopt1_h
-#define juego2casinopt1_h
+#ifndef FIRSTCASINOGAMEPT1_H
+#define FIRSTCASINOGAMEPT1_H
 
 #include <iostream>
-#include "juego1casinopt2.h"
+#include "firstCasinoGamept2.h"
 using namespace std;
 
 void pauseseconds(int seconds) {

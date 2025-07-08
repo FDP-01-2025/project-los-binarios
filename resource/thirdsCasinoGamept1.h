@@ -1,8 +1,8 @@
-#ifndef juego3casinopt1_h
-#define juego3casinopt1_h
+#ifndef THIRDSCASINOGAMEPT1_H
+#define THIRDCSASINOGAMEPT1_H
 
 #include <iostream>
-#include "juego3casinopt2.h"
+#include "thirdsCasinoGamept2.h"
 using namespace std;
 
 void startRouletteGame(double& money) {
@@ -16,7 +16,7 @@ void startRouletteGame(double& money) {
     waitSeconds(2);
     cout << "LOADING ROULETTE...\n";
     waitSeconds(2);
-    cout << "JEJEJE... SIUUUUUUU\n";
+    cout << "WAIT A SECOND PLEASE\n";
     waitSeconds(2);
     cout << "ARE YOU READY FOR THE FINAL GAME??\n";
     waitSeconds(2);

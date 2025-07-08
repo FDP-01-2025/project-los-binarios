@@ -6,7 +6,7 @@
 #include "archery.h"
 #include "prologue.h"
 #include "menu.h"
-#include "juegoscasino.h"
+#include "casinoGame.h"
 #include "statues.h"
 #include "finalBattle.h"
 #include "softia.h"

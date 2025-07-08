@@ -1,10 +1,10 @@
-#ifndef juego1casinopt2_h
-#define juego1casinopt2_h
+#ifndef FIRSTCASINOGAMEPT2_H
+#define FIRSTCASINOGAMEPT2_H
 
 #include <iostream>
 #include <chrono>
 #include <string>
-#include "juego1casinopt3.h"
+#include "firstCasinoGamept3.h"
 using namespace std;
 using namespace std::chrono;
 

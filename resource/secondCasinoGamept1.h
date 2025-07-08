@@ -1,12 +1,12 @@
-#ifndef juego2casinologica_h
-#define juego2casinologica_h
+#ifndef SECONDCASINOGAMEPT1_H
+#define SECONDCASINOGAMEPT1_H
 
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include <conio.h>
 #include <chrono>
-#include "juego2casinovisual.h"
+#include "secondCasinoGamept2.h"
 
 using namespace std;
 using namespace std::chrono;

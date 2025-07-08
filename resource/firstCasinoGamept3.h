@@ -1,5 +1,5 @@
-#ifndef juego1casinopt3_h
-#define juego1casinopt3_h
+#ifndef FIRSTCASINOGAMEPT3_H
+#define FIRSTCASINOGAMEPT3_H
 
 #include <string>
 #include <vector>

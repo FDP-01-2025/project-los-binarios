@@ -1,5 +1,5 @@
-#ifndef juego3casinopt3_h
-#define juego3casinopt3_h
+#ifndef THIRDSCASINOGAMEPT3_H
+#define THIRDSCASINOGAMEPT3_H
 
 #include <ctime>
 #include <iostream>

@@ -1,5 +1,5 @@
-#ifndef juego2casinovisual_h
-#define juego2casinovisual_h
+#ifndef SECONDCASINOGAMEPT2_H
+#define SECONDCASINOGAMEPT2_H
 
 #include <iostream>
 #include <chrono>
