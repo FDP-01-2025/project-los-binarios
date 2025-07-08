@@ -1,6 +1,6 @@
 #ifndef FIRSTCASINOGAMEPT3_H
 #define FIRSTCASINOGAMEPT3_H
-
+#pragma once
 #include <string>
 #include <vector>
 #include <cctype>

@@ -1,5 +1,6 @@
 #ifndef CHUBBY_H
 #define CHUBBY_H
+#pragma once
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -109,7 +110,7 @@ void countdown() {
     for (int i = 3; i > 0; --i) {
         cout << "\nStarting in... " << i << " ⏳" << endl;
         wait(1000);
-        clearScreen();
+        clearScren();
     }
     cout << "\nRUN! 🏋🏃‍♂️💨\n";
     wait(1000);

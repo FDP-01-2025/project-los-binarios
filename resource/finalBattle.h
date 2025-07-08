@@ -1,5 +1,6 @@
 #ifndef FINALBATTLE_H
 #define FINALBATTLE_H
+#pragma once
 
 #include <iostream>
 #include <cstdlib>

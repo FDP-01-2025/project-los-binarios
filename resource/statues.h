@@ -1,4 +1,5 @@
 #define STATUES_H
+#pragma once
 #include <iostream>
 #include <conio.h>
 #include <windows.h>

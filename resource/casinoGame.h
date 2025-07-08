@@ -1,4 +1,5 @@
 #define JUEGOSCASINO_H
+#pragma once
 #include "firstCasinoGamept1.h"         
 #include "secondCasinoGamept1.h"    
 #include "thirdsCasinoGamept1.h"    

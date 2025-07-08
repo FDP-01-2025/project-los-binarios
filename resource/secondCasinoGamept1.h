@@ -1,6 +1,6 @@
 #ifndef SECONDCASINOGAMEPT1_H
 #define SECONDCASINOGAMEPT1_H
-
+#pragma once
 #include <iostream>
 #include <cstdlib>
 #include <ctime>

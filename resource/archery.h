@@ -1,4 +1,5 @@
 #define ARCHERY_H
+#pragma once
 #include <iostream>
 #include <windows.h>
 #include <conio.h>

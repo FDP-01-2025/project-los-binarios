@@ -1,4 +1,5 @@
 #define MENU_H
+#pragma once
 #include <iostream>
 #include <windows.h>
 #include "sleep.h"

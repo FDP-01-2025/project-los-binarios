@@ -1,3 +1,6 @@
+#ifndef HISTORY_H
+#define HISTORY_H
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <conio.h>
@@ -115,7 +118,7 @@ bool load() {
 }
 
 
-int main() {
+void history() {
     int opcion;
 
     do {
@@ -146,6 +149,5 @@ int main() {
         }
 
     } while (opcion != 5); 
-
-    return 0;
 }
+#endif

@@ -1,5 +1,6 @@
 #ifndef SOFTIA_H
 #define SOFTIA_H
+#pragma once
 #include <iostream>
 #include <vector>
 #include <conio.h>

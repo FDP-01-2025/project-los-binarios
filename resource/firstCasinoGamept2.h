@@ -1,5 +1,6 @@
 #ifndef FIRSTCASINOGAMEPT2_H
 #define FIRSTCASINOGAMEPT2_H
+#pragma once
 
 #include <iostream>
 #include <chrono>

@@ -1,5 +1,6 @@
 #ifndef THIRDSCASINOGAMEPT1_H
 #define THIRDCSASINOGAMEPT1_H
+#pragma once
 
 #include <iostream>
 #include "thirdsCasinoGamept2.h"

@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <conio.h>
 #include "sleep.h"
+#pragma once
 using namespace std;
 
 void cricketBeep() { //Simulates a cricket sound to add ambiance

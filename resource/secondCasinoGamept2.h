@@ -1,6 +1,6 @@
 #ifndef SECONDCASINOGAMEPT2_H
 #define SECONDCASINOGAMEPT2_H
-
+#pragma once
 #include <iostream>
 #include <chrono>
 

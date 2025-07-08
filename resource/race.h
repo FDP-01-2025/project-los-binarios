@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <windows.h>
 #include "sleep.h"
+#pragma once
 using namespace std;
 
 

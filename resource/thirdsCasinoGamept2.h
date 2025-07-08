@@ -1,5 +1,6 @@
 #ifndef THIRDSCASINOGAMEPT2_H
 #define THIRDCSASINOGAMEPT2_H
+#pragma once
 
 #include <iostream>
 #include <vector>
