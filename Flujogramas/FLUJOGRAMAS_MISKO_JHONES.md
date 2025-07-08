@@ -1,60 +1,54 @@
-# Misko Jhones: Flowchart Collection
+# MISKO JHONES: Flowchart Documentation
 
-This repository contains a complete set of flowcharts corresponding to each `.h` file of the game "Misko Jhones: The Missing OL KOI".
-
-Each flowchart is labeled with the name of the corresponding file and visually represents the logical sequence of its code. These flowcharts were created manually and illustrate both decisions and actions.
+This document describes the order and structure of all flowcharts created for the C++ game **"Misko Jhones: The Missing OL KOI"**. Each flowchart was carefully designed to represent the behavior of individual game modules and their interactions. All diagrams were uploaded as image files, and one final main flowchart was added to show the complete narrative flow.
 
 ---
 
-## 🗂️ File Structure
+## 🔁 How to Read the Flowcharts
 
-Here’s the order in which the flowcharts should be read to follow the entire gameplay logic:
+Each flowchart corresponds to a `.h` file or a game level/function. To understand the game’s progression:
 
-1. `menu.h` – Main menu navigation and option selection.
-2. `prologue.h` – Introduction of the story and first scene.
-3. `statues.h` – The statues level mechanics.
-4. `archery.h` – Archery mini-game logic.
-5. `casinoGame.h` – Entry point of the casino and its three mini-games:
-   - `flujograma_casino_inicio.png` – Start of the casino.
-   - `flujograma_casino_frases.png` – Logic puzzle.
-   - `flujograma_casino_reaccion.png` – Reaction game.
-   - `flujograma_casino_ruleta.png` – Roulette mechanic.
-6. `chubby.h` – Escape from the chubby pursuer.
-7. `race.h` – Dual race challenge.
-8. `softia.h` – Space-invaders style mini-game.
-9. `finalBattle.h` – Final boss battle with The Watcher.
-10. `sleep.h` – Utility used across all modules.
-11. `history.h` – Master controller that ties all game progress and calls the corresponding levels based on `progress`.
+1. **Start with `menu.h`**: This file represents the entry point and main menu of the game.
+2. Then follow the order defined in the `historia()` function, which dictates the story progression.
+3. Each flowchart has decisions and actions shown with classic flowchart symbols:
+   - **Terminator** (Oval): Start/End
+   - **Process** (Rectangle): Action or instruction
+   - **Decision** (Diamond): A yes/no or multi-branch decision
 
 ---
 
-## 🧾 Additional Information
+## 🧭 Order of Flowcharts (Based on `historia()` and game logic)
 
-- All flowcharts were exported as `.png` or `.jpg` for ease of use.
-- A principal flowchart that connects the entire game logic is also included.
-- Each flowchart uses standardized flowchart symbols (start/end, decisions, actions).
-- Ideal for documentation or future development planning.
+The images were named according to the module they represent:
 
----
-
-## 📦 Included Files
-
-```txt
-archery_flujograma.png
-final_battle_flujograma.png
-flujo.txt
-flujograma_casino_frases.png
-flujograma_casino_inicio.png
-flujograma_casino_reaccion.png
-flujograma_casino_ruleta.png
-flujograma_menu.png
-prologo_flujograma.png
-race_flujograma.png
-sleep_flujograma.png
-softia_flujograma.jpg
-statues_flujograma.jpg
-```
+1. `flujograma_menu.png` — Represents `menu.h`
+2. `prologo_flujograma.png` — Represents `prologue.h`
+3. `statues_flujograma.jpg` — Represents `statues.h`
+4. `archery_flujograma.png` — Represents `archery.h`
+5. `flujograma_casino_inicio.png` — Part 1 of `casinoGame.h`
+6. `flujograma_casino_frases.png` — Part 2 of `casinoGame.h`
+7. `flujograma_casino_reaccion.png` — Part 3 of `casinoGame.h`
+8. `flujograma_casino_ruleta.png` — Part 4 of `casinoGame.h`
+9. `chubby_flujograma.png` — Represents `chubby.h`
+10. `race_flujograma.png` — Represents `race.h`
+11. `softia_flujograma.jpg` — Represents `softia.h`
+12. `final_battle_flujograma.png` — Represents `finalBattle.h`
+13. `sleep_flujograma.png` — Represents `sleep.h` (used as a helper function in almost every module)
 
 ---
 
-**Created by:** Elías & ChatGPT ✨
+## 📌 Notes
+
+- All diagrams were created following a vertical flow orientation for clarity.
+- The `sleep.h` module was also flowcharted to show how pauses (`wait()`) are integrated.
+- A **main story flowchart** was also added to visualize how levels are called from the `history()` function.
+
+---
+
+## 🗂️ Additional File
+
+- `flujo.txt`: Used temporarily for textual flow annotations during development.
+
+---
+
+Enjoy exploring the logic behind **MISKO JHONES**! 🌀
